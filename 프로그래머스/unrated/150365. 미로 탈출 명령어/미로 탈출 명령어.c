@@ -32,26 +32,22 @@ char* solution(int n, int m, int x, int y, int r, int c, int k) {
             vMove--; nx++;
         }
         // 1. d (남은 거리)
-        if (nx < n && rMove > 0) {
-            for (int l = rMove; nx<n && l>rMove / 2; l--) {
-                answer[i++] = 'd';
-                h++; nx++;
-            }
-            rMove -= (2 * h);
+        for (int l = rMove; nx<n && l>rMove / 2; l--) {
+            answer[i++] = 'd';
+            h++; nx++;
         }
+        rMove -= (2 * h);
         // 2. l (최단 경로)
         while (hMove < 0) {
             answer[i++] = 'l';
             hMove++; ny--;
         }
         // 2. l (남은 거리)
-        if (ny > 1 && rMove > 0) {
-            for (int l = rMove; ny > 1 && l > rMove / 2; l--) {
-                answer[i++] = 'l';
-                v++; ny--;
-            }
-            rMove -= (2 * v);
+        for (int l = rMove; ny > 1 && l > rMove / 2; l--) {
+            answer[i++] = 'l';
+            v++; ny--;
         }
+        rMove -= (2 * v);
         // 3. r (남은 거리)
         while (ny < m && rMove>0) {
             answer[i++] = 'r';
